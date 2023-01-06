@@ -23,5 +23,5 @@ def greetings_http(request):
    return '<html><head></head>\
         <body style="background-color:#060C59;"><div style="height:100%;background-repeat:no-repeat;background-position:center;\
         background-image:url(https://raw.githubusercontent.com/pluralsight-cloud/content-hands-on-with-google-cloud-functions/main/http-2nd-gen/hello-world.jpg);">\
-        <h1 style="padding-top:100px;font-size:48px;color:white;text-align:center;">Greetings from Pluralsight, {}!</h1>\
+        <h1 style="padding-top:100px;font-size:48px;color:white;text-align:center;text-shadow: 2px 2px #222;">Greetings from Pluralsight, {}!</h1>\
         </div></body></html>'.format(name)
