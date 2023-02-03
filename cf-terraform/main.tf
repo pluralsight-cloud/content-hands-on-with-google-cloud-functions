@@ -30,7 +30,7 @@ resource "google_storage_bucket_object" "object" {
 resource "google_cloudfunctions2_function" "function" {
   name        = "function"
   location    = "us-east1"
-  description = "a new function"
+  description = "Pub/Sub Triggered 2nd Gen Function"
 
   build_config {
     runtime     = "nodejs16"
