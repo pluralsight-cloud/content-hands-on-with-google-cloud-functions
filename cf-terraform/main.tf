@@ -24,7 +24,7 @@ resource "google_storage_bucket" "bucket" {
 resource "google_storage_bucket_object" "object" {
   name   = "function-source.zip"
   bucket = google_storage_bucket.bucket.name
-  source = "./v2/helloPubSub/function-source.zip" # Add path to the zipped function source code
+  source = "./cloud-function/function-source.zip" # Add path to the zipped function source code
 }
 
 resource "google_cloudfunctions2_function" "function" {
