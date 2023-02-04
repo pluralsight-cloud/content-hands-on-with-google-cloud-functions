@@ -12,7 +12,7 @@ resource "random_id" "bucket_prefix" {
 }
 
 resource "google_pubsub_topic" "topic" {
-  name = "functions2-topic"
+  name = "cloud-guru-topic"
 }
 
 resource "google_storage_bucket" "bucket" {
@@ -24,20 +24,17 @@ resource "google_storage_bucket" "bucket" {
 resource "google_storage_bucket_object" "object" {
   name   = "function-source.zip"
   bucket = google_storage_bucket.bucket.name
-  source = "./cloud-function/function-source.zip" # Add path to the zipped function source code
+  source = "./cloud-function/function-source.zip" # Check path to the zipped function source code
 }
 
 resource "google_cloudfunctions2_function" "function" {
-  name        = "function"
+  name        = "cloud-guru-function"
   location    = "us-east1"
   description = "Pub/Sub Triggered 2nd Gen Function"
 
   build_config {
     runtime     = "nodejs16"
     entry_point = "greetingsPubSub" # Set the entry point
-    environment_variables = {
-      BUILD_CONFIG_TEST = "build_test"
-    }
     source {
       storage_source {
         bucket = google_storage_bucket.bucket.name
@@ -51,9 +48,6 @@ resource "google_cloudfunctions2_function" "function" {
     min_instance_count = 1
     available_memory   = "256M"
     timeout_seconds    = 60
-    environment_variables = {
-      SERVICE_CONFIG_TEST = "config_test"
-    }
     ingress_settings               = "ALLOW_INTERNAL_ONLY"
     all_traffic_on_latest_revision = true
     service_account_email          = "[SERVICE_ACCOUNT_EMAIL]"
